@@ -7,10 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install dependencies
-        run: npm install   # this creates node_modules/
-
-      - name: Check for compromised packages
+      - name: Run Compromise Checker
         run: |
           curl -O https://raw.githubusercontent.com/Security-Phoenix-demo/Qxi-npm-compromise-checker/main/quick_check.sh
           chmod +x quick_check.sh
