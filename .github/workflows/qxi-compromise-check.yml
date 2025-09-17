@@ -1,12 +1,18 @@
 name: NPM Compromise Check
 on: [push, pull_request]
+
 jobs:
   security-scan:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Check for compromised packages
+
+      - name: Install deps (to build lockfile)
+        run: npm install --package-lock-only
+
+      - name: Run compromise check
         run: |
-          curl -O https://raw.githubusercontent.com/Security-Phoenix-demo/Qxi-npm-compromise-checker/main/quick_check.sh
+          curl -s -L -o quick_check.sh https://raw.githubusercontent.com/Security-Phoenix-demo/Qxi-npm-compromise-checker/main/quick_check.sh
           chmod +x quick_check.sh
-          ./quick_check.sh node_modules/
+          ./quick_check.sh .
+
