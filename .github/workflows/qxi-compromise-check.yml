@@ -1,0 +1,12 @@
+name: NPM Compromise Check
+on: [push, pull_request]
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check for compromised packages
+        run: |
+          curl -O https://raw.githubusercontent.com/[repo]/quick_check.sh
+          chmod +x quick_check.sh
+          ./quick_check.sh
