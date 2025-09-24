@@ -11,5 +11,5 @@ jobs:
         run: |
           curl -O https://raw.githubusercontent.com/Security-Phoenix-demo/Qxi-npm-compromise-checker/main/quick_check.sh
           chmod +x quick_check.sh
-          ./quick_check.sh node_modules/
+          ./quick_check.sh 
 
